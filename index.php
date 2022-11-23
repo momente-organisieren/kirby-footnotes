@@ -26,8 +26,8 @@ Kirby::plugin('sylvainjule/footnotes', [
         },
 
         /* Temporary solution, waiting for Blocks methods */
-        'withoutBlocksFootnotes' => function($field, $startAt) {
-            return Footnotes::convert($field->text(), false, true, false, false, $startAt);
+        'withoutBlocksFootnotes' => function($field, $startAt, $theme='default') {
+            return Footnotes::convert($field->text(), false, true, false, false, $startAt, false, $theme);
         },
         'onlyBlocksFootnotes' => function($field, $startAt) {
             return Footnotes::convert($field->text(), false, false, true, false, $startAt, true);

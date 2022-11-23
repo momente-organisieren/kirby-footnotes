@@ -2,7 +2,7 @@
 
 class Footnotes {
 
-    public static function convert($text, $remove = false, $without = false, $only = false, $kt = true, $startAt = 1, $unwrapped = false) {
+    public static function convert($text, $remove = false, $without = false, $only = false, $kt = true, $startAt = 1, $unwrapped = false, $theme='default') {
         $text = $kt ? kirbytext($text) : $text;
 
         $matches    = null;
@@ -23,7 +23,7 @@ class Footnotes {
             $order = $startAt;
 
             foreach($notes as $key => $note) {
-                $data       = ['count' => $count, 'order' => $order, 'note' => $note];
+                $data       = ['count' => $count, 'order' => $order, 'note' => $note, 'theme' => $theme];
                 $text       = self::str_replace_first($references[$key], snippet('footnotes_reference', $data, true), $text);
                 $notesStr  .= snippet('footnotes_entry', $data, true);
                 $notesArr[] = snippet('footnotes_entry', $data, true);
